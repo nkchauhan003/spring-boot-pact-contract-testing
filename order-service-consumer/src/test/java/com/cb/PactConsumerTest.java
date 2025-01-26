@@ -15,11 +15,17 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * This class contains tests for the Order Consumer using Pact to verify interactions with the Inventory Provider.
+ */
 @SpringBootTest
 @ExtendWith(PactConsumerTestExt.class)
 @PactTestFor(providerName = "InventoryProvider")
 public class PactConsumerTest {
 
+    /**
+     * The expected response from the Inventory Provider.
+     */
     String expectedResponse = """
             {
               "productId": "b52833df-eaf7-4efc-8a96-ee8534a4e24a",
@@ -27,6 +33,12 @@ public class PactConsumerTest {
             }
             """;
 
+    /**
+     * Defines the Pact between the Order Consumer and the Inventory Provider.
+     *
+     * @param builder the Pact DSL builder
+     * @return the Pact
+     */
     @Pact(consumer = "OrderConsumer")
     public V4Pact getInventoryById(PactDslWithProvider builder) {
         return builder
@@ -45,6 +57,11 @@ public class PactConsumerTest {
                 .toPact(V4Pact.class);
     }
 
+    /**
+     * Tests the interaction defined in the Pact.
+     *
+     * @param mockServer the mock server provided by Pact
+     */
     @Test
     @PactTestFor(pactMethod = "getInventoryById", port = "8081")
     public void testById(MockServer mockServer) {

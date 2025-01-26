@@ -21,6 +21,7 @@ public class PactProviderTest {
     @BeforeEach
     void setup(PactVerificationContext context) {
         context.setTarget(new HttpTestTarget("localhost", 8081));
+        System.setProperty("pact.verifier.publishResults", "true");
     }
 
     @TestTemplate

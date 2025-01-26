@@ -1,2 +1,5 @@
 spring.application.name: inventory-service-provider
 server.port: 8081
+pact:
+  verifier:
+    publishResults: true
