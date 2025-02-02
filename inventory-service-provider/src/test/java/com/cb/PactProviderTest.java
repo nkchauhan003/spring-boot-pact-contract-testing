@@ -18,7 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Provider("InventoryProvider")
-@PactBroker(url = "https://org-cb.pactflow.io", authentication = @PactBrokerAuth(token = "j-ZoHEwkZDBUOuBjeQOQDg"))
+@PactBroker(url = "https://org-cb.pactflow.io", authentication = @PactBrokerAuth(token = "k-XpYTGvrMFNJaKsCZLRWe"))
 public class PactProviderTest {
 
     /**
